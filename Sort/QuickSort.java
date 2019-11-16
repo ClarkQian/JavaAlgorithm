@@ -30,7 +30,11 @@ public class QuickSort {
 
 	}
 	
-	
+	/*
+	 * ep is the pointer used to point to the begin of the equal
+	 * sp is the scan pointer
+	 * bp is the pointer uesd to point to the end of the equal(the same the head -1 of bigger sequence)
+	 * */
 	private static int[] _partition3(int[] a, int begin, int end) {
 		int pivot = a[begin];
 		int ep = begin;
