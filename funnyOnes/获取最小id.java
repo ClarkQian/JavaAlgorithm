@@ -37,7 +37,7 @@ public class Main {
 				bp--;
 			}
 		}
-		swap(a, begin, bp);
+		swap(a, begin, bp); 
 		return bp;
 	}
 
