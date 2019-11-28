@@ -38,8 +38,9 @@ public class Main {
 			if(dstHash == srcHash)
 				return i;
 			else{
-				dstHash -= a.charAt(i)*Math.pow(seed, patternLength-1)%Long.MAX_VALUE;
-				dstHash += a.charAt(i+patternLength)%Long.MAX_VALUE;
+				//dstHash -= a.charAt(i)*Math.pow(seed, patternLength-1)%Long.MAX_VALUE;
+				//dstHash += a.charAt(i+patternLength)%Long.MAX_VALUE;
+				dstHsh = (a.charAt(i+patternLength)-a.charAt(i)*Math.pow(seed, patternLength-1))%Long.MAX_VALUE;
 			}
 		}
 		
