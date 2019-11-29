@@ -98,6 +98,10 @@ public class Main {
 	}
 
 	public static int indexOf(String a, String pattern) {
+		//防止越界
+		if(pattern.length() > a.length())
+			return -1;
+		
 		int i = 0;
 		int j = 0;
 		int[] next = getNext(pattern);
