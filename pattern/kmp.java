@@ -74,6 +74,9 @@ public class Main {
 		int[] next = new int[pattern.length()];
 		//0的位置为了理解偏移，必须设置为-1，因为0的话还在原地
 		next[0] = -1;
+		/判断是一位的情况
+		if(pattern.length() == 1)
+			return next;
 //		这个理解为往右移一位
 		next[1] = 0;
 		
@@ -99,9 +102,7 @@ public class Main {
 
 	public static int indexOf(String a, String pattern) {
 		//防止越界
-		if(pattern.length() > a.length())
-			return -1;
-		if(a.length() == 0 || pattern.length() == 0)
+		if(pattern.length() > a.length() || pattern.length() == 0 || a.length() == 0)
 			return -1;
 		
 		int i = 0;
