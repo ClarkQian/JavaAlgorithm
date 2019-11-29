@@ -101,6 +101,8 @@ public class Main {
 		//防止越界
 		if(pattern.length() > a.length())
 			return -1;
+		if(a.length() == 0 || pattern.length() == 0)
+			return -1;
 		
 		int i = 0;
 		int j = 0;
