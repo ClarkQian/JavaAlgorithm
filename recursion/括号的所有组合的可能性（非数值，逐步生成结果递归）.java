@@ -10,7 +10,8 @@ public class Main {
 	public static HashSet<String> getParenthesis(int n){
 		
 		
-		
+		//使用集合是为了避免重复的情况
+		//比如n = 2 -> ()()左  ()()右是重复的
 		HashSet<String>hs = new HashSet<String>();
 		if(n == 1){
 			hs.add("()");
