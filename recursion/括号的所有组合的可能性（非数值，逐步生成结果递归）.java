@@ -9,6 +9,9 @@ public class Main {
 	
 	public static HashSet<String> getParenthesis(int n){
 		
+		//对于()
+		//有三种可能
+		//()左  (())包含 ()()右
 		
 		//使用集合是为了避免重复的情况
 		//比如n = 2 -> ()()左  ()()右是重复的
