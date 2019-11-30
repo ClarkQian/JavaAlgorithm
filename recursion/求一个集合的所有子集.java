@@ -4,7 +4,32 @@ import java.util.HashSet;
 import java.util.Scanner;
 
 public class Main {
+	//下一个是在上一个的基础上添加得到的
+	//添加括号
+	
+		//二进制选择法
+	public static HashSet<HashSet<String>> getSubSet3(String[]src){
+		
+		HashSet<HashSet<String>> res = new HashSet<HashSet<String>>();
 
+		for(int i = 0; i <= Math.pow(2, src.length)-1; i++){
+			HashSet<String> tmp = new HashSet<String>();
+			for(int j = 0; j < src.length; j++){
+				if(((i>>j)&1) == 1){
+					tmp.add(src[j]);
+				}
+			}
+			res.add(tmp);
+		}
+		
+		
+		
+		return res;
+		
+	}
+	
+	
+	
 	//递归
 	public static HashSet<HashSet<String>> getSubSet2(String[] src){
 		return _getSubSet2(src, src.length-1);
@@ -33,6 +58,7 @@ public class Main {
 		return hs_new;
 		
 	}
+	
 	
 	
 	//递推
