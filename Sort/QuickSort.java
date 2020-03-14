@@ -62,6 +62,44 @@ public class QuickSort {
 	}
 
 
+
+//recommend
+
+	private static void _quickSort3(int[] a, int n, int l, int r) {
+		if(l >= r)
+			return;
+		
+		int pivot = a[l];
+		int lp = l + 1; // the left edge of j=
+		int rp = r; // the right edge of =
+		int sp = l + 1;
+		
+		while(sp <= rp){
+			if(a[sp] < pivot){
+				swap(a, sp, lp);
+				sp++;
+				lp++;
+			} else if(a[sp] > pivot){
+				swap(a, sp, rp);
+				rp--;
+			} else { // == 
+				sp++;
+			}
+		}
+		
+		swap(a, l, lp-1);
+		lp--;
+		
+		_quickSort3(a, n, l, lp-1);
+		_quickSort3(a, n, rp+1, r);
+		
+		
+	}
+
+
+
+
+
 	public static void twoWayQuickSort(int[] a, int begin, int end) {
 
 		if (end < begin)
