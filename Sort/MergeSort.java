@@ -78,3 +78,12 @@ public class MergeSort {
 	}
 
 }
+
+//一段错误的代码
+//		if(l >= r)
+//			return;
+//
+//		int mid = l + ((r - l) >> 1);
+//		System.out.printf("%s %s %s\n",l,mid,r);
+//		_mergeSort(a, n, l, mid-1); // left sort
+//		_mergeSort(a, n, mid, r); // right sort
