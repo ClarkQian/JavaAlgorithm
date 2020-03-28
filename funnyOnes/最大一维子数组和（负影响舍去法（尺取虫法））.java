@@ -28,6 +28,61 @@ public class Main {
 		
 		return max;
 	}
+	//concise one
+		private static int getMax(int[] a, int n) {
+		int max = a[0];
+		int tmp = a[0];
+		for (int i = 1; i < n; i++) {
+			if (tmp >= 0) { // positive contribution
+				continue;
+			} else {
+				tmp = 0;
+			}
+			
+			
+			
+			
+			tmp += a[i];
+
+			if (tmp > max) {
+				max = tmp;
+			}
+			
+			//compared by contribution
+			
+		}
+
+		
+		return max;
+		
+	}
+	//fault one
+		private static int getMax(int[] a, int n) {
+		int max = a[0];
+		int tmp = a[0];
+		for (int i = 1; i < n; i++) {
+			tmp += a[i];
+			
+			//missing the first index determination
+			if (tmp > max) {
+				max = tmp;
+			}
+			
+			//compared by contribution
+			
+			if (tmp >= 0) { // positive contribution
+				continue;
+			} else {
+				tmp = 0;
+			}
+		}
+
+		
+		return max;
+		
+	}
+	
+	
 	public static void main(String[] args) {
 		int[] a = new int[] { 1, 2, 3, 4, -2, 6, -1 };
 		System.out.println(getMax(a));
