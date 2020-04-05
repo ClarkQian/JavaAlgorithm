@@ -81,6 +81,30 @@ public class Main {
 		return max;
 		
 	}
+	  // 递推法 Θ(n)
+  static int findByDp(int[] arr) {
+    // System.out.println("======="+arr.length);
+    if (arr.length == 0) return 0;
+    int sumJ = arr[0];  // 前J个元素的最大贡献
+    int max = sumJ;
+    int left = 0, right = 0;
+    for (int j = 1; j < arr.length; j++) {
+      if (sumJ >= 0) {  // 左子表的最大和为正，继续向后累加
+        sumJ += arr[j];
+      } else {
+        sumJ = arr[j];
+        left = j;//丢弃前部分和的同时,更新left
+      }
+
+      if (sumJ > max) {
+        max = sumJ;
+        right = j;//更新max的同时更新right
+      }
+    }
+    // System.out.println(max+",left="+left+",right:"+right);
+    return max;
+  }
+
 	
 	
 	public static void main(String[] args) {
