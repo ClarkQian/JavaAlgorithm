@@ -9,6 +9,8 @@
 	public static Stack<Integer> stack = new Stack<Integer>();
 	
 	public static int[]goBack(int a, int b){
+		//a = b/ b  = a- (a1/b1)*b;
+		
 		if(stack.empty()){
 			return new int[]{a,b};
 		}
@@ -23,6 +25,8 @@
 	
 	// ax + by = kd(d为gcd否则没有整数解)
 	public static int[] resolve(int a, int b){
+		
+		//a = b/ b = a%b
 		
 		if(b == 0) return goBack(a, b);
 		
