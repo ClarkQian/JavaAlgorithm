@@ -25,3 +25,4 @@
 		return d;
 
 	}
+	//获取不同的解，此消彼长   x = x0 + b/gcc*t        y = y0 - a/gcc*t
