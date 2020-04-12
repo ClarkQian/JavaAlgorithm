@@ -25,7 +25,7 @@ public class Main {
 		
 		
 		int res = 0;
-	
+		//如果扣过掉了循环就停了，不会到最后一个硬币？？？？ 0 0 0呢
 		for(int i = 0; i*coins[current_index]<=sum; i++){
 			res += _solve(sum-i*coins[current_index],coins,current_index-1);
 		}
@@ -36,7 +36,7 @@ public class Main {
 	}
 	
 
-	//new one
+	//new one：写的不够精简
 	public static int calc(int total, int[] coins, int n, int index) {
 		if (total < 0) {
 
