@@ -42,5 +42,12 @@
 
 		}
 
+	  	//much better one
+	  	for(int i = 2; i <= m; i++){
+			for(int j = 2; j <= n; j++){
+				state[i][j] = state[i][j-1]+state[i-1][j];
+			}
+		}
+	  
 		return a[0][0];
 	}
