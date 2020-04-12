@@ -15,7 +15,7 @@
 		int[][] a = new int[x][y];
 		a[0][0] = -1;
 
-		// initialize
+		// initialize fill up
 		for (int i = x - 1; i >= 0; i--) {
 			a[i][y - 1] = 1;
 		}
@@ -23,7 +23,8 @@
 		for (int i = y - 1; i >= 0; i--) {
 			a[x-1][i] = 1;
 		}
-
+		
+	  	//using inital elements to fill whole grid.
 		while (a[0][0] == -1) {
 			x--;
 			y--;
