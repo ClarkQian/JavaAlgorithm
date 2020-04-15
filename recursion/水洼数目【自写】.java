@@ -30,7 +30,7 @@ W.W.W.....W.
 3
 
 
-
+//思路1
 public static int count = 0;
 
 	
@@ -106,4 +106,30 @@ public static int count = 0;
 		 System.out.println();
 		 }
 		 System.out.println(count);
+	}
+
+
+//思路二：相同的warp
+public static void test82(char[][] pond, int x, int y) {
+		
+		
+		if (x < 0 || x >= pond.length || y < 0 || y >= pond[0].length) {
+			return;
+		}
+
+		if (pond[x][y] == 'W') {
+			pond[x][y] = '.';
+			// count++;
+			// search in 8 directions
+
+			test82(pond, x - 1, y - 1);
+			test82(pond, x - 1, y);
+			test82(pond, x - 1, y + 1);
+			test82(pond, x, y - 1);
+			test82(pond, x, y + 1);
+			test82(pond, x + 1, y - 1);
+			test82(pond, x + 1, y);
+			test82(pond, x + 1, y + 1);
+		} 
+
 	}
