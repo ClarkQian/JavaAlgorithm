@@ -16,3 +16,23 @@
 		}
 
 	}
+
+
+	public static Stack<Integer> st1 = new Stack<Integer>();
+	
+	private static void solve(int[]a, int cur){
+		
+		if(cur == a.length){
+			System.out.println(st1.toString());
+			return;
+		}
+		
+	
+		
+		solve(a, cur+1);
+		st1.push(a[cur]);
+		solve(a, cur+1);
+		st1.pop();
+		
+		
+	}
