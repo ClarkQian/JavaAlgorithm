@@ -49,3 +49,35 @@
 		testShow(a, 0);
 
 	}
+
+//添加剪纸
+
+	private static ArrayList<Integer> ll = new ArrayList<Integer>();
+
+	public static void testShow(int[] a) {
+
+		if (ll.size() == a.length) {
+			if (ll.get(0) == 1) {
+
+				System.out.println(ll.toString());
+			}
+			return;
+		}
+
+		for (int i = 0; i < a.length; i++) {
+			if (ll.indexOf(a[i]) == -1) {
+				int index = ll.size();
+				ll.add(a[i]);
+				if (ll.size() >= 2) {
+					if (isPrime(ll.get(index - 1) + ll.get(index)) == true) {
+						testShow(a);
+					}
+				} else {
+					testShow(a);
+				}
+
+				ll.remove(index);
+			}
+		}
+
+	}
