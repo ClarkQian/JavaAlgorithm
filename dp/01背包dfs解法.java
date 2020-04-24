@@ -37,3 +37,26 @@
 		solve(w, contianer, 0);
 		
 	}
+
+
+
+	public static int solve2(int w, Element2[] container, int cur) {
+
+		if (w <= 0)
+			return 0;
+		if (cur == container.length)
+			return 0;
+
+		// 不选
+		int res2 = 0 + solve2(w, container, cur + 1);
+
+		// 还装的下
+		if (w - container[cur].weight >= 0) {
+			int res1 = container[cur].value
+					+ solve2(w - container[cur].weight, container, cur + 1);
+			return res1 > res2 ? res1 : res2;
+		} else {
+			return res2;
+		}
+
+	}
