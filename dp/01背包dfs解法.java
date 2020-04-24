@@ -1,28 +1,29 @@
 
 
 //添加一个max判断就可以了
-public static int value;
+	public static int value;
+
 	public static void solve(int w, Element2[] container, int cur) {
-		
-		if(cur  == container.length){
-			return;
-		}
-		
-		if(w == 0){
+
+		if (w == 0) {
 			System.out.println(value);
 			return;
 		}
-		if(w < 0)
+		if (w < 0)
 			return;
-		
+		if (cur == container.length) {
+			return;
+		}
+
+
 		// choose current
 
 		value += container[cur].value;
-		solve(w - container[cur].weight, container, cur+1);
+		solve(w - container[cur].weight, container, cur + 1);
 		value -= container[cur].value;
-		
-		//not 
-		solve(w, container, cur+1);
+
+		// not
+		solve(w, container, cur + 1);
 	}
 
 	public static void main(String[] args) {
