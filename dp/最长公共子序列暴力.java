@@ -18,7 +18,9 @@ public class Main {
 					// partition
 					sb.append(a.charAt(i));
 					solve(a, i + 1, b, j + 1);
-					break;
+					//break;
+					return; //这个位置不能使用break;这样只结束了里面的循环，没有结束外面的循环，应该改成return作为用Exit的替换方案
+
 				} else {
 					continue;
 				}
