@@ -10,14 +10,18 @@ public class Main {
 	public static int count = 0;
 
 	public static void solveWarp(int[] a) {
+		int max = 0;
 		for (int i = 0; i < a.length - 1; i++) {
 			if (a[i + 1] >= a[i]) {
 				count++;
 				solve(a, i + 1, a[i + 1]);
-				break;
+				max = max > count?max:count;
+				count = 0;
 			}
 		}
-		System.out.println(count);
+		
+		
+		System.out.println(max);
 	}
 
 	public static void solve(int[] a, int start, int before) {
@@ -33,7 +37,7 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		int[] a = new int[] { 4, 2, 3, 1, 5, 6 };
+		int[] a = new int[] { 10, 5, 6, 1, 2, 3, 4,5};
 		solveWarp(a);
 	}
 }
