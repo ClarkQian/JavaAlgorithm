@@ -192,6 +192,31 @@ public class Main {
 
         return false;
     }
+    
+        public static boolean isParlindrome(Node root) {
+        Stack<Node> stack = new Stack<>();
+        Node midR = getMiddleAddOne(root);
+        System.out.println(midR.data);
+        Node p = root;
+        while (p != null) {
+            stack.add(p);
+            p = p.next;
+        }
+
+        p = root;
+        while (p != midR) {
+            Node popOne = stack.pop();
+//            System.out.println(popOne.data);
+            if (popOne.data == p.data){
+                p = p.next;
+                continue;
+            } else {
+                return false;
+            }
+        }
+
+        return true;
+    }
 
     public static void main(String[] args) {
         Node head = new Node(1);
