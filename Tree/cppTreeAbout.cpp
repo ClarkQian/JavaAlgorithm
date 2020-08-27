@@ -189,7 +189,6 @@ TreeNode *rroot;
 
 TreeNode *insertNode(TreeNode *root, int data)
 {
-
 	if (root == NULL)
 	{
 		insertor = new TreeNode(data);
@@ -212,7 +211,7 @@ TreeNode *insertNode(TreeNode *root, int data)
 			root->rchild->isRight = true;
 		}
 	}
-
+	rroot = root;
 	return root;
 }
 
@@ -260,19 +259,40 @@ void rightRotate(TreeNode *q, TreeNode *p)
 		if (p->isLeft)
 		{
 			pParent->lchild = q;
+			q -> parent = pParent;
+			q -> isLeft = true;
+			q -> isRight = false;
 		}
 		else
 		{
 			pParent->rchild = q;
+			q -> parent = pParent;
+			q -> isRight = true;
+			q -> isLeft = false;
 		}
 		q->rchild = p;
+		p -> parent = q;
+		p -> isRight = true;
+		p -> isLeft = false;
+
 		p->lchild = qRight;
+		if(qRight != NULL){
+		 	qRight -> parent = p;
+			qRight -> isLeft = true;
+			qRight -> isRight = false;
+		}
 	}
 	else // root -> q;
 	{
 		q->rchild = p;
 		p->lchild = qRight;
+		if(qRight != NULL){
+			qRight -> parent = p;
+			qRight -> isLeft = true;
+			qRight -> isRight = false;
+		}
 		rroot = q;
+		rroot -> parent = NULL;
 	}
 }
 
@@ -285,17 +305,41 @@ void leftRotate(TreeNode *q, TreeNode *p)
 		if (p->isLeft)
 		{
 			pParent->lchild = q;
+			q-> parent = pParent;
+			q -> isLeft = true;
+			q -> isRight = false;
 		}
 		else
 		{
 			pParent->rchild = q;
+			q -> parent = pParent;
+			q -> isRight = true;
+			q -> isLeft = false;
 		}
 		q->lchild = p;
+		p -> parent = q;
+		p -> isLeft = true;
+		p -> isRight = false;
 		p->rchild = qLeft;
+		if(qLeft != NULL){
+			qLeft -> parent = p;
+			q -> isRight = true;
+			q -> isLeft = false;
+
+		}
 	} else {
 		q->lchild = p;
+		p -> parent = q;
+		p -> isLeft = true;
+		p -> isRight = false;
 		p->rchild = qLeft;
+		if(qLeft!=NULL){
+			qLeft -> parent = p;
+			qLeft -> isRight = true;
+			qLeft -> isLeft = false;
+		}
 		rroot = q;
+		rroot -> parent = NULL;
 	}
 }
 
@@ -412,6 +456,60 @@ int getMax(TreeNode *root)
 	return p->data;
 }
 
+void remove(TreeNode* node){
+	if(node == NULL)
+		return;
+
+	if(node -> lchild != NULL && node -> rchild != NULL){
+		TreeNode* p = node -> rchild;
+		while(p -> lchild != NULL){
+			p = p -> lchild;
+		}
+		node -> data = p -> data;
+		remove(p);
+
+
+	} else if(node -> lchild == NULL && node -> rchild != NULL){//which means only have right child
+		cout<<"I'm in right"<<endl;
+		if(node -> parent != NULL){
+			if(node -> isLeft){
+				node -> parent -> lchild = node -> rchild;
+			} else {
+				node -> parent -> rchild = node -> rchild;
+			}
+		} else {
+			rroot = node -> rchild;
+		}
+	} else if(node -> rchild == NULL && node -> lchild != NULL){ // only have left child
+		cout<<"i'm in left"<<endl;
+		if(node -> parent != NULL){
+			if(node -> isLeft){
+				node -> parent -> lchild = node -> lchild;
+			} else {
+				node -> parent -> rchild = node -> lchild;
+			}
+		} else {
+			rroot = node -> lchild;
+		}
+
+	} else { // leaf
+		// cout<<endl;
+		// levelTraverse(node);
+		if(node -> parent != NULL){
+			if(node -> isLeft){
+				node -> parent -> lchild = NULL;
+			} else {
+				node -> parent -> rchild = NULL;
+			}
+
+		} else {
+			cout<<"wrong"<<endl;
+			rroot = NULL;
+		}
+	}
+
+}
+
 int main(int argc, char const *argv[])
 {
 
@@ -496,12 +594,15 @@ int main(int argc, char const *argv[])
 	root = avlInsert(root, 6);
 	levelTraverse(root);
 	cout<<"_________________________"<<endl;
-	root = avlInsert(root, 6);
+	root = avlInsert(root, 7);
 	levelTraverse(root);
 	cout<<"_________________________"<<endl;
-	root = avlInsert(root, 6);
+	root = avlInsert(root, 8);
 	levelTraverse(root);
 	cout<<"_________________________"<<endl;
+	remove(root);
+	levelTraverse(rroot);
+	// cout<<(root -> rchild -> lchild -> parent) -> data<<endl;
 
 	// TreeNode* root = new TreeNode(6);
 	// root -> lchild = new TreeNode(1);
