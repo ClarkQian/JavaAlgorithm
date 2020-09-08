@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/qq188/Desktop/algorithm/Student.h
+iostream
+C:/Users/qq188/Desktop/algorithm/iostream
+string
+C:/Users/qq188/Desktop/algorithm/string
+
+C:/Users/qq188/Desktop/algorithm/main.cpp
+iostream
+-
+algorithm
+-
+sortHelper.h
+C:/Users/qq188/Desktop/algorithm/sortHelper.h
+Student.h
+C:/Users/qq188/Desktop/algorithm/Student.h
+assert.h
+C:/Users/qq188/Desktop/algorithm/assert.h
+
+C:/Users/qq188/Desktop/algorithm/sortHelper.h
+stdlib.h
+-
+iostream
+C:/Users/qq188/Desktop/algorithm/iostream
+ctime
+C:/Users/qq188/Desktop/algorithm/ctime
+assert.h
+C:/Users/qq188/Desktop/algorithm/assert.h
+
